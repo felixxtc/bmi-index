@@ -355,24 +355,36 @@ input[type=number] {
 .zyzz-container {
     position: fixed;
     bottom: 0;
-    right: 0;
     width: 35%;
     max-width: 600px;
-    min-width: 300px;
-    z-index: -1;
+    min-width: 250px;
+    z-index: 0;
     pointer-events: none;
     opacity: 0.25;
     filter: grayscale(100%) contrast(110%) brightness(1.1);
     animation: zyzzFloat 8s ease-in-out infinite;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+}
+
+.zyzz-right {
+    right: 0;
+}
+
+.zyzz-left {
+    left: 0;
+    transform: scaleX(-1); /* зеркалит фото */
 }
 
 .zyzz-img {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* На телефоне скрываем обоих */
+@media (max-width: 768px) {
+    .zyzz-container {
+        display: none;
+    }
 }
 
 @keyframes zyzzFloat {
