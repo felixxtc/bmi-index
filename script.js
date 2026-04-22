@@ -9,22 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let bmiHistory = JSON.parse(localStorage.getItem('auraBmiHistory')) || [];
 
     const getStatusInfo = (bmi) => {
-        if (bmi < 18.5) return { text: 'Underweight', color: 'var(--status-underweight)' };
-        if (bmi >= 18.5 && bmi < 24.9) return { text: 'Normal', color: 'var(--status-normal)' };
-        if (bmi >= 25 && bmi < 29.9) return { text: 'Overweight', color: 'var(--status-overweight)' };
-        return { text: 'Obese', color: 'var(--status-obese)' };
+        if (bmi < 18.5) return { text: 'братан надо больше жрать 👅', color: 'var(--status-underweight)' };
+        if (bmi >= 18.5 && bmi < 24.9) return { text: 'все нормально 💯', color: 'var(--status-normal)' };
+        if (bmi >= 25 && bmi < 29.9) return { text: 'чуть лишнего, но ок 😐', color: 'var(--status-overweight)' };
+        return { text: 'братан пора на диету 😭', color: 'var(--status-obese)' };
     };
 
     const renderHistory = () => {
         historyList.innerHTML = '';
         if (bmiHistory.length === 0) {
-            historyList.innerHTML = '<li class="empty-state">No history yet. Start tracking!</li>';
+            historyList.innerHTML = '<li class="empty-state">Пока пусто. Начни считать!</li>';
             return;
         }
 
         bmiHistory.slice().reverse().forEach(entry => {
             const statusInfo = getStatusInfo(entry.bmi);
-            const date = new Date(entry.date).toLocaleDateString('en-US', { 
+            const date = new Date(entry.date).toLocaleDateString('ru-RU', { 
                 month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
             });
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.innerHTML = `
                 <div class="history-info">
                     <span class="history-date">${date}</span>
-                    <span class="history-metrics">${entry.weight} kg • ${entry.height} cm</span>
+                    <span class="history-metrics">${entry.weight} кг • ${entry.height} см</span>
                 </div>
                 <div class="history-score">
                     <span class="history-bmi" style="color: ${statusInfo.color}">${entry.bmi}</span>
@@ -65,20 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!weight || !height || weight <= 0 || height <= 0) return;
 
-        // BMI Formula: weight (kg) / height (m)^2
         const heightInMeters = height / 100;
         const bmi = +(weight / (heightInMeters * heightInMeters)).toFixed(1);
 
         const statusInfo = getStatusInfo(bmi);
 
-        // UI Update
         resultDisplay.style.display = 'block';
-        // Need a tiny delay for the CSS transition to apply after display:block
         setTimeout(() => {
             resultDisplay.classList.remove('hidden');
         }, 10);
         
-        // Animate BMI calculation
         animateValue(bmiValueEl, 0, bmi, 1000);
         
         setTimeout(() => {
@@ -87,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
             bmiStatusEl.style.color = statusInfo.color;
         }, 1000);
 
-        // Save to History
         const newEntry = {
             id: Date.now(),
             date: new Date().toISOString(),
@@ -104,12 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     clearHistoryBtn.addEventListener('click', () => {
-        if(confirm('Are you sure you want to clear your history?')) {
+        if(confirm('Точно очистить историю?')) {
             bmiHistory = [];
             localStorage.removeItem('auraBmiHistory');
             renderHistory();
             
-            // Hide result display
             resultDisplay.classList.add('hidden');
             setTimeout(() => {
                 if(resultDisplay.classList.contains('hidden')) {
@@ -118,11 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
             bmiValueEl.style.color = 'inherit';
             bmiValueEl.textContent = '--';
-            bmiStatusEl.textContent = 'Enter your details';
+            bmiStatusEl.textContent = 'Введи данные';
             bmiStatusEl.style.color = 'inherit';
         }
     });
 
-    // Initial render
     renderHistory();
 });

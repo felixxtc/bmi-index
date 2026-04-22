@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura BMI Tracker</title>
-    <meta name="description"
-        content="A sleek, modern application to track and visualize your Body Mass Index over time.">
+    <title>Жиромер</title>
+    <meta name="description" content="Считай свой ИМТ по-русски">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,46 +20,44 @@
     </div>
 
     <div class="zyzz-container zyzz-right">
-    <img src="zyzz.png" alt="Zyzz" class="zyzz-img">
-</div>
+        <img src="zyzz.png" alt="Zyzz" class="zyzz-img">
+    </div>
 
-<div class="zyzz-container zyzz-left">
-    <img src="zyzz.png" alt="Zyzz" class="zyzz-img">
-</div>
+    <div class="zyzz-container zyzz-left">
+        <img src="zyzz.png" alt="Zyzz" class="zyzz-img">
+    </div>
 
     <main class="container">
         <header>
-            <h1>Aura <span>BMI</span></h1>
-            <p>Track your health journey in style</p>
+            <h1>Жиро<span>мер</span></h1>
+            <p>Узнай свой ИМТ, братан 💪</p>
         </header>
 
         <section class="calculator-card glass-panel">
             <form id="bmi-form">
                 <div class="input-group">
-                    <label for="weight">Weight (kg)</label>
-                    <input type="number" id="weight" step="0.1" placeholder="e.g. 70" required>
+                    <label for="weight">Вес (кг)</label>
+                    <input type="number" id="weight" step="0.1" placeholder="напр. 70" required>
                 </div>
                 <div class="input-group">
-                    <label for="height">Height (cm)</label>
-                    <input type="number" id="height" step="0.1" placeholder="e.g. 175" required>
+                    <label for="height">Рост (см)</label>
+                    <input type="number" id="height" step="0.1" placeholder="напр. 175" required>
                 </div>
-                <button type="submit" class="primary-btn">Calculate BMI</button>
+                <button type="submit" class="primary-btn">Посчитать ИМТ</button>
             </form>
 
             <div id="result-display" class="result-display hidden">
                 <div class="bmi-value" id="bmi-value">--</div>
-                <div class="bmi-status" id="bmi-status">Enter your details</div>
+                <div class="bmi-status" id="bmi-status">Введи данные</div>
             </div>
         </section>
 
         <section class="history-section glass-panel">
             <div class="history-header">
-                <h2>History</h2>
-                <button id="clear-history" class="text-btn">Clear All</button>
+                <h2>История</h2>
+                <button id="clear-history" class="text-btn">Очистить</button>
             </div>
-            <ul id="history-list" class="history-list">
-                <!-- History items populated via JS -->
-            </ul>
+            <ul id="history-list" class="history-list"></ul>
         </section>
     </main>
 
