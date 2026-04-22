@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura BMI Tracker</title>
+    <meta name="description"
+        content="A sleek, modern application to track and visualize your Body Mass Index over time.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="zyzz-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Zyzz_in_2011.jpg/800px-Zyzz_in_2011.jpg" alt="Zyzz" class="zyzz-img">
+    </div>
+
+    <main class="container">
+        <header>
+            <h1>Aura <span>BMI</span></h1>
+            <p>Track your health journey in style</p>
+        </header>
+
+        <section class="calculator-card glass-panel">
+            <form id="bmi-form">
+                <div class="input-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" step="0.1" placeholder="e.g. 70" required>
+                </div>
+                <div class="input-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" step="0.1" placeholder="e.g. 175" required>
+                </div>
+                <button type="submit" class="primary-btn">Calculate BMI</button>
+            </form>
+
+            <div id="result-display" class="result-display hidden">
+                <div class="bmi-value" id="bmi-value">--</div>
+                <div class="bmi-status" id="bmi-status">Enter your details</div>
+            </div>
+        </section>
+
+        <section class="history-section glass-panel">
+            <div class="history-header">
+                <h2>History</h2>
+                <button id="clear-history" class="text-btn">Clear All</button>
+            </div>
+            <ul id="history-list" class="history-list">
+                <!-- History items populated via JS -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
