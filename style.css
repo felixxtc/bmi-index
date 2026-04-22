@@ -380,10 +380,13 @@ input[type=number] {
     display: block;
 }
 
-/* На телефоне скрываем обоих */
 @media (max-width: 768px) {
-    .zyzz-container {
+    .zyzz-left {
         display: none;
+    }
+    .zyzz-container {
+        width: 45%;
+        opacity: 0.15;
     }
 }
 
